@@ -1,0 +1,7 @@
+<%- |
+  String $maintained_by,
+| -%>
+#
+#  This configuration file is managed by Puppet in the require_function module
+#  Please contact '<%= $maintained_by %>' for more information
+#

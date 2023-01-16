@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "generic/centos7"
   
   config.vm.synced_folder "./require_function", "/etc/puppetlabs/code/environments/production/modules/require_function", create: true
+  config.vm.synced_folder "./return_variables", "/etc/puppetlabs/code/environments/production/modules/return_variables", create: true
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.

@@ -14,5 +14,6 @@ class require_function (
     "require_function::${component}"
   }
 
-  include $include_components
+  # always require on the entry, otherwise any class or resource that requires this class will not have the resource applied in sequence
+  require $include_components
 }

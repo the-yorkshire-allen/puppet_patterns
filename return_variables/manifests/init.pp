@@ -17,12 +17,15 @@ class return_variables (
 
   # check to see if the class exists before trying to require it
   if defined(Class["return_variables::roles::${my_role}"]) {
-    require "return_variables::roles::${my_role}"
-    $keys = getvar("return_variables::roles::${my_role}::keys")  # pull the varaible from the class
+    if defined("return_variables::roles::${my_role}::keys") {
 
-    file { "/etc/${my_role}":
-      ensure  => file,
-      content => $keys,
+      require "return_variables::roles::${my_role}"
+      $keys = getvar("return_variables::roles::${my_role}::keys")  # pull the varaible from the class
+
+      file { "/etc/${my_role}":
+        ensure  => file,
+        content => $keys,
+      }
     }
   } else {
     notify("Role ${my_role} is not supported by return_variables")

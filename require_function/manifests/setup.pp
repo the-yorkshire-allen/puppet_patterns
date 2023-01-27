@@ -5,7 +5,8 @@
 # @example
 #   include require_function::setup
 class require_function::setup {
-  require require_function::install
+  require require_function::install  # Package['docker']
+  require require_function::service  # Service['docker']
 
   # Add configuration file
   file { '/etc/require_function.conf':
@@ -14,5 +15,6 @@ class require_function::setup {
     owner   => 'root',
     group   => 'root',
     notify  => Service['docker'],
+    require => Package['docker'],
   }
 }
